@@ -55,27 +55,41 @@ No build tools. No npm. No frameworks. Pure static.
 
 ```
 portfolio-website/
-├── index.html          # Single-page main file
-├── README.md           # This file
-├── REQUIREMENTS.md     # Full requirements document
+├── index.html              # Shell — just placeholders, no content
+├── README.md               # This file
+├── REQUIREMENTS.md         # Full requirements document
 ├── .gitignore
+├── sections/               # ⭐ Edit content here — one file per section
+│   ├── header.html         # Navigation menu
+│   ├── hero.html           # Top banner with name & slogan
+│   ├── impact-strip.html   # Number counters strip
+│   ├── about.html          # About the Parshad
+│   ├── achievements.html   # Completed work
+│   ├── ongoing.html        # In-progress projects with progress bars
+│   ├── vision.html         # Future plans + roadmap
+│   ├── queries.html        # Public queries handling
+│   ├── trust.html          # 4 trust pillars
+│   ├── message.html        # Personal letter to citizens
+│   ├── contact.html        # Contact info
+│   └── footer.html         # Footer
 ├── css/
-│   └── style.css       # All styles + theme variables
+│   └── style.css           # All styles + theme variables
 ├── js/
-│   └── main.js         # Interactivity, counters, animations
-└── assets/             # Images / icons (placeholder)
+│   ├── loader.js           # Fetches sections & boots main.js
+│   └── main.js             # Interactivity, counters, animations
+└── assets/                 # Images / icons (placeholder)
 ```
+
+**How it works:** `index.html` is a thin shell with `<div data-section="name"></div>` placeholders. `loader.js` fetches each `sections/*.html` file and injects it into the matching placeholder, then boots `main.js` for interactivity. This keeps each section in its own small, editable file.
 
 ---
 
 ## 🚀 Run Locally
 
-Open `index.html` directly in any browser — no server needed.
-
-Or run a simple local server:
+> ⚠️ **A local server is required** — the loader uses `fetch()` which browsers block on `file://` URLs. Don't double-click `index.html`; run a server instead.
 
 ```bash
-# Python 3
+# Python 3 (pre-installed on most systems)
 python -m http.server 8000
 
 # Node
@@ -87,22 +101,31 @@ php -S localhost:8000
 
 Then visit `http://localhost:8000`.
 
+On GitHub Pages this "just works" — Pages serves over HTTPS so `fetch()` functions normally.
+
 ---
 
 ## ✏️ How to Update Content
 
-The site is designed so a non-technical volunteer can update it.
+The site is designed so a non-technical volunteer can update it. **Each section lives in its own file in `sections/`** — edit one file, the rest stay untouched.
 
 | Task | File | What to Edit |
 |---|---|---|
+| Change menu / navigation | `sections/header.html` | Edit the `<nav>` list |
+| Update hero title / slogan | `sections/hero.html` | Edit the headline & quote |
+| Update impact counters | `sections/impact-strip.html` | Change `data-target="120"` values |
+| Update biography | `sections/about.html` | Edit paragraph text |
+| Add a completed achievement | `sections/achievements.html` | Copy-paste an `.achievement-item` block |
+| Add an ongoing project | `sections/ongoing.html` | Copy-paste a `.progress-item` block |
+| Update progress bar % | `sections/ongoing.html` | Change `data-progress="50"` value |
+| Update vision / roadmap | `sections/vision.html` | Edit vision cards or roadmap phases |
+| Add a trust pillar | `sections/trust.html` | Copy-paste a `.trust-card` block |
+| Edit public message | `sections/message.html` | Edit the letter paragraphs |
+| Update contact info | `sections/contact.html` | Edit `.contact-card` blocks |
 | Change theme colors | `css/style.css` | `:root` variables at the very top |
 | Change fonts | `css/style.css` | `--font-main` / `--font-heading` |
-| Add a completed achievement | `index.html` | Copy-paste an `.achievement-item` block |
-| Add an ongoing project | `index.html` | Copy-paste a `.progress-item` block |
-| Update progress bar % | `index.html` | Change `data-progress="50"` value |
-| Update impact counter number | `index.html` | Change `data-target="120"` value |
-| Update contact info | `index.html` | Edit `.contact-card` blocks |
-| Add a new key project | `index.html` | Copy-paste a `.project-card` block |
+
+> 🎯 **Only ever touch `index.html` if you're adding or removing a whole section.** For content updates, always go to `sections/`.
 
 > 📖 See **[REQUIREMENTS.md](REQUIREMENTS.md)** for the full requirements and update workflow.
 
