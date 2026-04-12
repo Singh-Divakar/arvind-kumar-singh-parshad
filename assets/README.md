@@ -4,8 +4,8 @@ Drop image files here. The website expects the following filenames:
 
 | File | Purpose | Recommended Size |
 |---|---|---|
-| `pm-india.jpg` | Photo of the Prime Minister of India | 300×300 px, square |
-| `cm-up.jpg` | Photo of the Chief Minister of Uttar Pradesh | 300×300 px, square |
+| `pm-india.png` | Photo of the Prime Minister of India | 300×300 px, square |
+| `cm-up.png` | Photo of the Chief Minister of Uttar Pradesh | 300×300 px, square |
 
 ## How the images are used
 
@@ -17,18 +17,18 @@ silhouette placeholder — so the page never looks broken.
 
 ## Formats
 
-- `.jpg` is preferred for photos (smaller file size)
-- `.png` also works
-- Keep each file under **200 KB** for fast loading
+- `.png` is used here (supports transparent backgrounds nicely)
+- Keep each file under **250 KB** for fast loading
+- Compress PNGs at [tinypng.com](https://tinypng.com) if needed
 
 ## How to update
 
-1. Save the official photograph as `pm-india.jpg` (or `cm-up.jpg`)
+1. Save the official photograph as `pm-india.png` (or `cm-up.png`)
 2. Place the file in this `assets/` folder
 3. Commit & push — GitHub Pages will update automatically
 
 ```bash
-git add assets/pm-india.jpg assets/cm-up.jpg
+git add assets/pm-india.png assets/cm-up.png
 git commit -m "Add official leader photos to hero"
 git push
 ```
