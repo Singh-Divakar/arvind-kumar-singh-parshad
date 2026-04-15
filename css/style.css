@@ -1337,6 +1337,58 @@ ul, ol { padding-left: 1.25rem; }
   color: var(--color-text-muted);
 }
 
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.quick-link-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.quick-link-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.quick-link-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+
+.quick-link-card strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 4px;
+}
+
+.quick-link-card span:last-child {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
 .query-quote {
   max-width: 700px;
   margin: 0 auto;
@@ -1448,9 +1500,74 @@ ul, ol { padding-left: 1.25rem; }
 @media (max-width: 600px) {
   .query-stats-bar       { grid-template-columns: repeat(2, 1fr); padding: var(--space-sm); }
   .trust-grid            { grid-template-columns: 1fr; }
+  .quick-links-grid      { grid-template-columns: 1fr; }
   .hero-actions          { flex-direction: column; align-items: center; }
   .hero-trust-badges     { gap: var(--space-xs); }
   .impact-strip-inner    { gap: var(--space-xs); }
   .impact-item           { min-width: 80px; }
 }
 
+/* ── LANGUAGE SWITCHER (English / Hindi) ───────────────────
+   Lives inside the sticky site header (top-right). Wraps
+   Google Translate's injected <select> so it matches the
+   dark-blue header. */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: var(--space-sm);
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+}
+.lang-switcher__label {
+  color: rgba(255, 255, 255, 0.85);
+}
+.lang-switcher .goog-te-gadget {
+  font-family: var(--font-main) !important;
+  font-size: 0 !important;          /* hides "Powered by" text nodes */
+  color: transparent !important;
+  line-height: 1 !important;
+}
+/* Hide attribution spans/links but NOT the select itself. */
+.lang-switcher .goog-te-gadget > span,
+.lang-switcher .goog-logo-link,
+.lang-switcher .goog-te-gadget img {
+  display: none !important;
+}
+.lang-switcher .goog-te-gadget .goog-te-combo {
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 3px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  color: var(--color-primary-dark);
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+.lang-switcher .goog-te-gadget .goog-te-combo:hover {
+  border-color: var(--color-accent);
+}
+
+/* Stop Google Translate from shoving the page down with its top banner */
+body { top: 0 !important; }
+.goog-te-banner-frame.skiptranslate { display: none !important; }
+.skiptranslate > iframe { display: none !important; }
+
+@media (max-width: 900px) {
+  .lang-switcher              { margin-left: auto; margin-right: var(--space-xs); }
+}
+@media (max-width: 600px) {
+  .lang-switcher              { padding: 3px 8px; font-size: 0.72rem; }
+  .lang-switcher__label       { display: none; }
+}

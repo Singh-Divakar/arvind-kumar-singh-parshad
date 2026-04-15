@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+i<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Official portfolio of Arvind Kumar Singh – Parshad, Ward No. 01, Gorakhpur. See completed works, ongoing projects, future plans, and how to report issues." />
-  <title>Arvind Kumar Singh – Parshad, Ward No. 01, Gorakhpur</title>
+  <meta name="description" content="Official portfolio of Arvind Singh – Parshad, Ward No. 1 (Mahadev Jharkhandi Tukda No-1), Gorakhpur. See completed works, ongoing projects, future plans, and how to report issues." />
+  <title>Arvind Singh – Parshad, Ward No. 1, Gorakhpur</title>
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
 </head>
@@ -45,6 +45,34 @@
 
   <!-- Global UI elements (not part of any section) -->
   <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">&#8679;</a>
+
+  <!-- Google Translate (English ↔ Hindi).
+       Sections are injected async by loader.js, so the mount div
+       inside sections/header.html may not exist when the library
+       loads. We poll briefly until it's in the DOM. -->
+  <script>
+    let __gtLibReady = false;
+    function googleTranslateElementInit() {
+      __gtLibReady = true;
+      __tryInitTranslate();
+    }
+    function __tryInitTranslate() {
+      if (!__gtLibReady) return;
+      const el = document.getElementById('google_translate_element');
+      if (!el) { setTimeout(__tryInitTranslate, 100); return; }
+      if (el.dataset.gtInit) return;
+      el.dataset.gtInit = '1';
+      // Default layout renders a native <select class="goog-te-combo"> —
+      // that's what the CSS in style.css is styling. Do NOT pass
+      // InlineLayout.SIMPLE here; it produces a different widget.
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <!-- Loader: fetches all sections, then boots main.js -->
   <script src="js/loader.js"></script>

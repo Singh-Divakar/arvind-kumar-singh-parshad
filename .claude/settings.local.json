@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l f:/SoftwaresCreate/portfolio-website/sections/*.html f:/SoftwaresCreate/portfolio-website/js/main.js f:/SoftwaresCreate/portfolio-website/css/style.css)",
+      "Bash(tasklist //FI \"IMAGENAME eq git.exe\")"
+    ]
+  }
+}
